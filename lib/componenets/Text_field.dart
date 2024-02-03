@@ -22,7 +22,7 @@ class MyTextField extends StatelessWidget {
         filled: true,
         fillColor: Color.fromARGB(255, 46, 46, 47), 
         hintText: hinttext,
-        hintStyle: TextStyle(color: Color(0xFF4A484A), fontWeight: FontWeight.w500),
+        hintStyle: TextStyle(color: Color.fromARGB(255, 109, 107, 109), fontWeight: FontWeight.w500),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(17.0), 
           borderSide: const BorderSide(color: Colors.grey), 

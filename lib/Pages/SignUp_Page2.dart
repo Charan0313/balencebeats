@@ -1,30 +1,27 @@
-import 'package:balencebeats/Pages/SignUp_Page2.dart';
+import 'package:balencebeats/Pages/home_screen.dart';
 import 'package:balencebeats/componenets/Text_button.dart';
 import 'package:balencebeats/componenets/Text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'dart:math' as math;
 
-class SignUp1 extends StatefulWidget {
-  SignUp1({super.key});
-  final NameController = TextEditingController();
-
+class Signup2 extends StatefulWidget {
+  Signup2({super.key});
+  final usernamecontroller = TextEditingController();
+  final passwordcontroller = TextEditingController();
   @override
-  State<SignUp1> createState() => _SignUp1State();
+  State<Signup2> createState() => _Signup2State();
 }
 
-class _SignUp1State extends State<SignUp1> {
+class _Signup2State extends State<Signup2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF0B0B19),
+      backgroundColor: Color(0xFF0B0B19),
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios),
-          onPressed: () {
-            Get.back();
-          },
+          onPressed: () => {Get.back()},
         ),
         elevation: 0,
         title: Text('Sign up'),
@@ -49,14 +46,14 @@ class _SignUp1State extends State<SignUp1> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
-                        'Hey there',
+                        'Nice to meet you, <NAME>!',
                         style: TextStyle(fontSize: 14, color: Colors.white),
                       ),
                       const SizedBox(
                         height: 5,
                       ),
                       const Text(
-                        'How can I help you',
+                        'Lets fill  additional data',
                         style: TextStyle(fontSize: 14, color: Colors.white),
                       ),
                     ],
@@ -74,16 +71,29 @@ class _SignUp1State extends State<SignUp1> {
             ),
             SizedBox(height: Get.height / 7),
             Container(
-                padding: EdgeInsets.symmetric(horizontal: Get.width / 15),
-                child: MyTextField(
-                    hinttext: 'Enter Your Name',
+              padding: EdgeInsets.symmetric(horizontal: Get.width / 15),
+              child: Column(
+                children: [
+                  MyTextField(
+                    hinttext: 'Enter Your Username',
                     unknowntext: false,
-                    controller: widget.NameController)),
-            SizedBox(height: Get.height / 50),
-            MyButton(
-                ontap: () =>
-                    {Get.to(Signup2(), transition: Transition.rightToLeft)},
-                text: 'CONTINUE')
+                    controller: widget.usernamecontroller,
+                  ),
+                  SizedBox(height: Get.height / 50),
+                  MyTextField(
+                    hinttext: 'Enter Your Password',
+                    unknowntext: true,
+                    controller: widget.passwordcontroller,
+                  ),
+                  SizedBox(height: Get.height / 50),
+                  MyButton(
+                    ontap: () =>
+                        Get.to(HomePage(), transition: Transition.rightToLeft),
+                    text: 'SIGN UP',
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),
