@@ -1,4 +1,4 @@
-import 'package:balencebeats/Pages/Page1.dart';
+import 'package:balencebeats/Pages/Page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart'; 
 

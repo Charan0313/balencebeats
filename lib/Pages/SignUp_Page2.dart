@@ -87,8 +87,14 @@ class _Signup2State extends State<Signup2> {
                   ),
                   SizedBox(height: Get.height / 50),
                   MyButton(
-                    ontap: () =>
-                        Get.to(HomePage(), transition: Transition.rightToLeft),
+                    ontap: () {
+                      final enteredUsername = widget.usernamecontroller.text;
+                      Get.to(
+                        () => HomePage(
+                            username: enteredUsername), 
+                        transition: Transition.rightToLeft,
+                      );
+                    },
                     text: 'SIGN UP',
                   ),
                 ],

@@ -26,15 +26,13 @@ class MyTextField extends StatelessWidget {
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(17.0), 
           borderSide: const BorderSide(color: Colors.grey), 
-          //  borderSide: BorderSide.none,
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0), 
           borderSide: const BorderSide(color: Colors.grey),
-          //  borderSide: BorderSide.none,
         ),
       ),
+      
     );
   }
 }
-// 2C2C2E

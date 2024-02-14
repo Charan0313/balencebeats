@@ -68,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(height: Get.height / 13),
             MyButton(
               ontap: () {
-                Get.to(HomePage());
+                Get.to(HomePage(username: 'charan',));
               },
               text: 'LOGIN',
             ),

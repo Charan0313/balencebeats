@@ -48,14 +48,14 @@ class _SignUp1State extends State<SignUp1> {
                   const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
+                       Text(
                         'Hey there',
                         style: TextStyle(fontSize: 14, color: Colors.white),
                       ),
-                      const SizedBox(
+                       SizedBox(
                         height: 5,
                       ),
-                      const Text(
+                       Text(
                         'How can I help you',
                         style: TextStyle(fontSize: 14, color: Colors.white),
                       ),

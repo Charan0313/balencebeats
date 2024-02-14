@@ -1,5 +1,4 @@
 import 'package:balencebeats/Pages/LandingPage.dart';
-import 'package:balencebeats/Pages/SignUp_page1.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
