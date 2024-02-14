@@ -1,4 +1,4 @@
-import 'package:balencebeats/Pages/ProfilePage.dart';
+import 'package:balencebeats/profile/pages/ProfilePage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,15 +10,36 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int myIndex = 0;
+  List<Widget> widgetList = const [
+    Text('home'),
+    Text('music'),
+    Text('check'),
+    ProfilePage(username: 'charan')
+
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+          onTap: (index) {
+            setState(() {
+              myIndex = index;
+            });
+          },
+          currentIndex: myIndex,
+          items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.home_outlined,color: Colors.black,), label: ''),
+            BottomNavigationBarItem(icon: Icon(Icons.music_note,color: Colors.black,), label: ''),
+            BottomNavigationBarItem(icon: Icon(Icons.check,color: Colors.black,), label: ''),
+            BottomNavigationBarItem(icon: Icon(Icons.manage_accounts,color: Colors.black,), label: '')
+          ]),
       backgroundColor: Colors.white,
       appBar: AppBar(
         actions: [
           IconButton(
               onPressed: () => {},
-              icon: Icon(
+              icon: const Icon(
                 Icons.notifications_outlined,
                 color: const Color.fromARGB(255, 4, 4, 4),
               ))
@@ -37,14 +58,9 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      body: Container(
-        padding: EdgeInsets.all(25),
-        child: Column(
-          children: [
-            Text('GOOD MORNING'),
-            Text(widget.username),
-          ],
-        ),
+      
+      body: Center(
+        child: widgetList[myIndex],
       ),
     );
   }
