@@ -1,5 +1,5 @@
-import 'package:balencebeats/Pages/SignUp_page1.dart';
-import 'package:balencebeats/Pages/home_screen.dart';
+import 'package:balencebeats/Screens/SignUp_page1.dart';
+import 'package:balencebeats/Screens/home_screen.dart';
 import 'package:balencebeats/componenets/Text_button.dart';
 import 'package:balencebeats/componenets/Text_field.dart';
 import 'package:flutter/material.dart';

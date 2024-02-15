@@ -13,7 +13,7 @@ class TextBar extends StatelessWidget {
       padding: const EdgeInsets.all(10.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [Text(text), Icon(icon)],
+        children: [Text(text,style: TextStyle(fontWeight: FontWeight.w600),), Icon(icon)],
       ),
     );
   }

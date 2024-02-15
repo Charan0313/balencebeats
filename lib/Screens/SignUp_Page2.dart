@@ -1,4 +1,4 @@
-import 'package:balencebeats/Pages/home_screen.dart';
+import 'package:balencebeats/Screens/home_screen.dart';
 import 'package:balencebeats/componenets/Text_button.dart';
 import 'package:balencebeats/componenets/Text_field.dart';
 import 'package:flutter/material.dart';

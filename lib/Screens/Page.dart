@@ -1,5 +1,5 @@
-import 'package:balencebeats/Pages/Login_Page.dart';
-import 'package:balencebeats/Pages/home_screen.dart';
+import 'package:balencebeats/Screens/Login_Page.dart';
+import 'package:balencebeats/Screens/home_screen.dart';
 import 'package:balencebeats/controllers/introduction_controller.dart';
 import 'package:balencebeats/data/introduction_description.dart';
 import 'package:flutter/material.dart';

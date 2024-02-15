@@ -1,4 +1,4 @@
-
+import 'package:balencebeats/Em_contacts/pages/em_contact.dart';
 import 'package:balencebeats/profile/components/text_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -30,19 +30,26 @@ class _ProfilePageState extends State<ProfilePage> {
                   const SizedBox(width: 10),
                   Text(
                     widget.username,
-                    style: const TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black,fontSize: 30),
                   ),
                 ],
               ),
-              const TextBar(text: 'Account', icon: Icons.navigate_next_outlined),
               const TextBar(
-                  text: 'Emergency Contacts', icon: Icons.navigate_next_outlined),
-              const TextBar(text: 'Language', icon: Icons.navigate_next_outlined),
+                  text: 'Account', icon: Icons.navigate_next_outlined),
+              GestureDetector(
+                onTap: ()=>{Get.to(EmergengyContact(),transition: Transition.rightToLeft)},
+                child: TextBar(
+                    text: 'Emergency Contacts',
+                    icon: Icons.navigate_next_outlined),
+              ),
+              const TextBar(
+                  text: 'Language', icon: Icons.navigate_next_outlined),
               const TextBar(
                   text: 'Whats new', icon: Icons.navigate_next_outlined),
               const TextBar(text: 'FAQ', icon: Icons.navigate_next_outlined),
               const TextBar(
-                  text: 'Terms Of Service ', icon: Icons.navigate_next_outlined),
+                  text: 'Terms Of Service ',
+                  icon: Icons.navigate_next_outlined),
               const TextBar(
                   text: 'Privacy Policy', icon: Icons.navigate_next_outlined),
               SizedBox(height: Get.height / 4),

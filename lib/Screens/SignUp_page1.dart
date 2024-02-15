@@ -1,4 +1,4 @@
-import 'package:balencebeats/Pages/SignUp_Page2.dart';
+import 'package:balencebeats/Screens/SignUp_Page2.dart';
 import 'package:balencebeats/componenets/Text_button.dart';
 import 'package:balencebeats/componenets/Text_field.dart';
 import 'package:flutter/material.dart';
