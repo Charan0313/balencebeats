@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../profile/pages/ProfilePage.dart';
+import '../../profile/pages/ProfilePage.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -19,7 +19,7 @@ class _HomepageState extends State<Homepage> {
               onPressed: () => {},
               icon: const Icon(
                 Icons.notifications_outlined,
-                color:  Color.fromARGB(255, 4, 4, 4),
+                color: Color.fromARGB(255, 4, 4, 4),
               ))
         ],
         elevation: 0,
@@ -30,10 +30,6 @@ class _HomepageState extends State<Homepage> {
               username: 'charan',
             ))
           },
-          child: Image.asset(
-            'assets/logoB.png',
-            color: Colors.black,
-          ),
         ),
       ),
     );

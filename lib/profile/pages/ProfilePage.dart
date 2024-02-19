@@ -1,4 +1,4 @@
-import 'package:balencebeats/Em_contacts/pages/em_contact.dart';
+import 'package:balencebeats/Emergencycontacts/pages/em_contact.dart';
 import 'package:balencebeats/profile/components/text_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

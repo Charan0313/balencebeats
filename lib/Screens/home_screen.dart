@@ -1,4 +1,5 @@
-import 'package:balencebeats/Screens/home_page.dart';
+import 'package:balencebeats/home/pages/home_page.dart';
+import 'package:balencebeats/learn/pages/learn_page.dart';
 import 'package:balencebeats/profile/pages/ProfilePage.dart';
 import 'package:flutter/material.dart';
 
@@ -13,8 +14,8 @@ class _HomePageState extends State<HomePage> {
   int myIndex = 0;
   List<Widget> widgetList = const [
     Homepage(),
-    Text('music'),
-    Text('check'),
+    Learnpage(),
+    Text('message'),
     ProfilePage(username: 'Charan')
   ];
   @override
@@ -52,8 +53,8 @@ class _HomePageState extends State<HomePage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.check,
-              size: 30,
+              Icons.message,
+              size: 26,
               color: myIndex == 2
                   ? Color.fromARGB(255, 140, 164, 226)
                   : Colors.black,

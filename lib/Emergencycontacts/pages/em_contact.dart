@@ -1,4 +1,4 @@
-import 'package:balencebeats/Em_contacts/components/contact_block.dart';
+import 'package:balencebeats/Emergencycontacts/components/contact_block.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -53,6 +53,7 @@ class _EmergengyContactState extends State<EmergengyContact> {
           ? SizedBox(
             width: Get.width/2,
             child: FloatingActionButton(
+              elevation: 0,
                 backgroundColor: Color.fromARGB(255, 140, 164, 226),
                 onPressed: () {
                   showDialog(

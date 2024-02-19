@@ -1,4 +1,5 @@
 import 'package:balencebeats/Screens/LandingPage.dart';
+import 'package:balencebeats/learn/pages/learn_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
@@ -19,7 +20,8 @@ class _MyAppState extends State<MyApp> {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primaryColor: Color(0xFF2C2C2E)),
-      home: LandingPage(),
+      // home: LandingPage(),
+      home: Learnpage(),
     );
   }
 }
