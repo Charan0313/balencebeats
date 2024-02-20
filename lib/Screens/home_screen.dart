@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             icon: Icon(
               size: 30,
-              Icons.music_note,
+              Icons.label_rounded,
               color: myIndex == 1
                   ? Color.fromARGB(255, 140, 164, 226)
                   : Colors.black,

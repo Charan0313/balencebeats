@@ -34,7 +34,7 @@ class _LandingPageState extends State<LandingPage> {
               height: 125.0,
             ),
           ),
-          SizedBox(height: 20.0),
+         const  SizedBox(height: 20.0),
           const Text(
             'BalenceBeats',
             style: TextStyle(

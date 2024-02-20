@@ -36,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(height: Get.height / 35),
             Container(
               height: 55,
-              padding: EdgeInsets.symmetric(horizontal: 25),
+              padding: const EdgeInsets.symmetric(horizontal: 25),
               child: MyTextField(
                 hinttext: 'Email',
                 unknowntext: false,
@@ -46,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(height: 20),
             Container(
               height: 55,
-              padding: EdgeInsets.symmetric(horizontal: 25),
+              padding: const EdgeInsets.symmetric(horizontal: 25),
               child: MyTextField(
                 hinttext: 'Password',
                 unknowntext: true,
@@ -68,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(height: Get.height / 13),
             MyButton(
               ontap: () {
-                Get.to(HomePage(username: 'charan',));
+                Get.to(HomePage(username: 'charan',) ,transition: Transition.rightToLeft);
               },
               text: 'LOGIN',
             ),
@@ -81,9 +81,9 @@ class _LoginPageState extends State<LoginPage> {
               },
               child: Container(
                 alignment: Alignment.centerLeft,
-                padding: EdgeInsets.only(left: 28),
+                padding: const  EdgeInsets.only(left: 28),
                 child: RichText(
-                  text: TextSpan(
+                  text: const  TextSpan(
                     text: 'Forgot your password ? ',
                     style: TextStyle(
                       color: Color.fromARGB(255, 205, 204, 204),
