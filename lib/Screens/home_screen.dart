@@ -64,7 +64,8 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             icon: Icon(
               size: 30,
-              Icons.manage_accounts,
+              // Icons.manage_accounts,
+              Icons.account_circle,
               color: myIndex == 3
                   ? Color.fromARGB(255, 140, 164, 226)
                   : Colors.black,

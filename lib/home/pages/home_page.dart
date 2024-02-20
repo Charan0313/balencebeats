@@ -34,6 +34,7 @@ class _HomepageState extends State<Homepage> {
               username: 'charan',
             ))
           },
+          child: const Icon(Icons.account_circle),
         ),
       ),
       body: const SingleChildScrollView(

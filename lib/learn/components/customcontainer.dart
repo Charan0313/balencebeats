@@ -16,13 +16,13 @@ class CustomComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(6.0),
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: GestureDetector(
         onTap: onTap,
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
+          padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: BorderRadius.circular(12),
             color: const Color.fromARGB(255, 165, 154, 243),
             boxShadow: [
               BoxShadow(
@@ -37,27 +37,31 @@ class CustomComponent extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Expanded(
                     child: Text(
                       firstText,
                       style: const TextStyle(
-                        fontSize: 15,
+                        fontSize: 16,
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
                   const SizedBox(width: 10),
-                  SizedBox(
-                    width: 150,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Image(image: image, fit: BoxFit.cover),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: Image(
+                      image: image,
+                      width: 110,
+                      height: 110,
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ],
               ),
+              const SizedBox(height: 10),
               Text(
                 secondText,
                 style: const TextStyle(
@@ -65,7 +69,6 @@ class CustomComponent extends StatelessWidget {
                   color: Colors.black,
                 ),
               ),
-              const SizedBox(height:  10),
             ],
           ),
         ),

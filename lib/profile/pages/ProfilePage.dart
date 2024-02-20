@@ -16,29 +16,34 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.all(20),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 125.0),
           child: Column(
             children: [
               Row(
                 children: [
-                  Image(
-                    image: const AssetImage('assets/logoB.png'),
-                    width: Get.width / 3.5,
-                    height: Get.height / 3.5,
+                  CircleAvatar(
+                    backgroundImage: const AssetImage('assets/charan.jpg'),
+                    radius: Get.height / 16,
                   ),
-                  const SizedBox(width: 10),
+                  SizedBox(
+                    width: Get.width / 8,
+                  ),
                   Text(
                     widget.username,
-                    style: const TextStyle(color: Colors.black,fontSize: 30),
+                    style: const TextStyle(color: Colors.black, fontSize: 30),
                   ),
                 ],
               ),
+
+              SizedBox(height: Get.height/12,),
               const TextBar(
                   text: 'Account', icon: Icons.navigate_next_outlined),
               GestureDetector(
-                onTap: ()=>{Get.to(EmergengyContact(),transition: Transition.rightToLeft)},
-                child: TextBar(
+                onTap: () => {
+                  Get.to(EmergengyContact(), transition: Transition.rightToLeft)
+                },
+                child: const TextBar(
                     text: 'Emergency Contacts',
                     icon: Icons.navigate_next_outlined),
               ),
