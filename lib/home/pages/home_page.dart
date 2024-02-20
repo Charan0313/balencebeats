@@ -1,3 +1,4 @@
+import 'package:balencebeats/home/components/Textblock.dart';
 import 'package:balencebeats/home/components/activity.dart';
 import 'package:balencebeats/home/components/custom_Icon_text.dart';
 import 'package:balencebeats/home/components/stressblock.dart';
@@ -50,7 +51,8 @@ class _HomepageState extends State<Homepage> {
               ),
               MyHomecompon(),
               StressBlock(value: '50'),
-              ActivityBlock(progressValue: 0.5)
+              ActivityBlock(progressValue: 0.5),
+              Mytextblock()
             ],
           ),
         ),
