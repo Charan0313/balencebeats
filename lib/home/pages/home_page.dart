@@ -1,6 +1,7 @@
 import 'package:balencebeats/home/bargraph/bargraph.dart';
 import 'package:balencebeats/home/components/Textblock.dart';
 import 'package:balencebeats/home/components/custom_Icon_text.dart';
+import 'package:balencebeats/home/components/sleepblock/sleep_block.dart';
 import 'package:balencebeats/home/components/stressblock.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -65,6 +66,10 @@ class _HomepageState extends State<Homepage> {
                       values: values,
                     )),
               ),
+              const SizedBox(
+                height: 10,
+              ),
+              const MySleepBlock(),
               const Mytextblock(),
             ],
           ),

@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class EmergengyContact extends StatefulWidget {
-  const EmergengyContact({super.key});
+  const EmergengyContact({Key? key});
 
   @override
   State<EmergengyContact> createState() => _EmergengyContactState();
 }
 
 class _EmergengyContactState extends State<EmergengyContact> {
-  List<String> contacts = [];
+  List<Map<String, String>> contacts = [];
 
   @override
   Widget build(BuildContext context) {
@@ -30,19 +30,23 @@ class _EmergengyContactState extends State<EmergengyContact> {
           child: Center(
             child: Column(
               children: [
-                const Text('Emergency Contact',
-                    style:
-                        TextStyle(fontSize: 25, fontWeight: FontWeight.w600)),
+                const Text(
+                  'Emergency Contact',
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600),
+                ),
                 SizedBox(height: Get.height / 10),
                 ...contacts
-                    .map((contact) => ContactBlock(
-                          contact: contact,
-                          onDelete: () {
-                            setState(() {
-                              contacts.remove(contact);
-                            });
-                          }, name: '', number: '',
-                        ))
+                    .map(
+                      (contact) => ContactBlock(
+                        contact: contact['name'] ?? '',
+                        number: contact['number'] ?? '',
+                        onDelete: () {
+                          setState(() {
+                            contacts.remove(contact);
+                          });
+                        },
+                      ),
+                    )
                     .toList(),
               ],
             ),
@@ -51,23 +55,38 @@ class _EmergengyContactState extends State<EmergengyContact> {
       ),
       floatingActionButton: contacts.length < 5
           ? SizedBox(
-            width: Get.width/2,
-            child: FloatingActionButton(
-              elevation: 0,
-                backgroundColor: Color.fromARGB(255, 140, 164, 226),
+              width: Get.width / 2,
+              child: FloatingActionButton(
+                elevation: 0,
+                backgroundColor: const Color.fromARGB(255, 140, 164, 226),
                 onPressed: () {
                   showDialog(
                     context: context,
                     builder: (BuildContext context) {
-                      String newContact = '';
+                      String newName = '';
+                      String newNumber = '';
                       return AlertDialog(
                         title: const Text('Add Contact'),
-                        content: TextField(
-                          onChanged: (value) {
-                            newContact = value;
-                          },
-                          decoration: const InputDecoration(
-                              hintText: 'Enter contact name'),
+                        content: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            TextField(
+                              onChanged: (value) {
+                                newName = value;
+                              },
+                              decoration: const InputDecoration(
+                                hintText: 'Enter contact name',
+                              ),
+                            ),
+                            TextField(
+                              onChanged: (value) {
+                                newNumber = value;
+                              },
+                              decoration: const InputDecoration(
+                                hintText: 'Enter your phone number',
+                              ),
+                            ),
+                          ],
                         ),
                         actions: [
                           TextButton(
@@ -78,9 +97,10 @@ class _EmergengyContactState extends State<EmergengyContact> {
                           ),
                           TextButton(
                             onPressed: () {
-                              if (newContact.isNotEmpty) {
+                              if (newName.isNotEmpty && newNumber.isNotEmpty) {
                                 setState(() {
-                                  contacts.add(newContact);
+                                  contacts.add(
+                                      {'name': newName, 'number': newNumber});
                                 });
                                 Navigator.of(context).pop();
                               }
@@ -92,11 +112,14 @@ class _EmergengyContactState extends State<EmergengyContact> {
                     },
                   );
                 },
-                child: const Text('Add contact',style: TextStyle(color: Colors.white),),
+                child: const Text(
+                  'Add contact',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
-          )
+            )
           : null,
-           floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

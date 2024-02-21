@@ -38,6 +38,12 @@ class MyHomecompon extends StatelessWidget {
                     onTap: () => controller.setSelectedText('Take deep breaths, count to ten'),
                   ),
                   MySmallBlock(
+                    imagePath: 'assets/Relax.png',
+                    text: 'Neautral',
+                    backgroundColor: const Color.fromARGB(255, 75, 163, 235),
+                    onTap: () => controller.setSelectedText('Neautral :)'),
+                  ),
+                  MySmallBlock(
                     imagePath: 'assets/angry.png',
                     text: 'Sad',
                     backgroundColor: const Color.fromARGB(255, 106, 208, 109),

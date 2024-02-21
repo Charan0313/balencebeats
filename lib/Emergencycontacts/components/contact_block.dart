@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 
 class ContactBlock extends StatelessWidget {
-  const ContactBlock({Key? key, required this.contact, required this.onDelete, required String name, required String number})
-      : super(key: key);
+  const ContactBlock({
+    Key? key,
+    required this.contact,
+    required this.number,
+    required this.onDelete,
+  }) : super(key: key);
 
   final String contact;
+  final String number;
   final VoidCallback onDelete;
 
   @override
@@ -47,13 +52,26 @@ class ContactBlock extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              contact,
-              style: const TextStyle(
-                fontSize: 16.0,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  contact,
+                  style: const TextStyle(
+                    fontSize: 16.0,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  number,
+                  style: const TextStyle(
+                    fontSize: 16.0,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
             ),
             const Icon(
               Icons.phone,

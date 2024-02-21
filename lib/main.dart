@@ -1,5 +1,5 @@
 import 'package:balencebeats/Screens/LandingPage.dart';
-import 'package:balencebeats/home/pages/home_page.dart';
+import 'package:balencebeats/Screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -27,7 +27,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primaryColor: const Color(0xFF2C2C2E)),
       home: LandingPage()
-      // home: Homepage(username: 'charan'),
+      // home: HomePage(username: 'charan'),
     );
   }
 }
