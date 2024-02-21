@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 class MyPrivacyPolicy extends StatelessWidget {
   const MyPrivacyPolicy({Key? key}) : super(key: key);
@@ -7,6 +9,12 @@ class MyPrivacyPolicy extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios_new),
+          onPressed: () {
+            Get.back();
+          },
+        ),
         title: const Text(
           'Privacy Policy',
           style: TextStyle(

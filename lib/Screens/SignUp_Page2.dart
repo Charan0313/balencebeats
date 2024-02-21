@@ -121,7 +121,7 @@ class _Signup2State extends State<Signup2> {
         .signupAnonymously(emailController.text, passwordController.text);
     if (user != null) {
       Get.offAll(HomePage(
-        username: 'charan',
+        username: widget.name,
       ));
     } else {
       Get.snackbar(

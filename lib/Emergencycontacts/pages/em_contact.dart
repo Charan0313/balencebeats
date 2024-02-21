@@ -22,7 +22,11 @@ class _EmergengyContactState extends State<EmergengyContact> {
             Get.back();
           },
         ),
-        title: const Text(''),
+        centerTitle: true,
+        title: const Text(
+                  'Emergency Contacts!',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                ),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -30,10 +34,6 @@ class _EmergengyContactState extends State<EmergengyContact> {
           child: Center(
             child: Column(
               children: [
-                const Text(
-                  'Emergency Contact',
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600),
-                ),
                 SizedBox(height: Get.height / 10),
                 ...contacts
                     .map(

@@ -49,7 +49,7 @@ class _HomepageState extends State<Homepage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Good Afternoon \n${widget.username}',
+                'Good Afternoon \n${widget.username} !',
                 style:
                     const TextStyle(fontSize: 30, fontWeight: FontWeight.w600),
               ),
