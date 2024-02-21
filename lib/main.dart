@@ -1,8 +1,14 @@
-import 'package:balencebeats/Screens/home_screen.dart';
+import 'package:balencebeats/Screens/Login_Page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -18,8 +24,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primaryColor: Color(0xFF2C2C2E)),
-      home: HomePage(username: 'charan',),
+      theme: ThemeData(primaryColor: const Color(0xFF2C2C2E)),
+      home: LoginPage(),
     );
   }
 }

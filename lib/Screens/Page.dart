@@ -37,7 +37,6 @@ class _Page1State extends State<Page1> {
               ),
             ),
           ),
-        
           Container(
             padding: EdgeInsets.symmetric(horizontal: Get.width / 6),
             child: Obx(
@@ -57,14 +56,13 @@ class _Page1State extends State<Page1> {
             () => PageIndicator(
                 currentPage: introductionController.id.value, pageCount: 3),
           ),
-
           const SizedBox(height: 50.0),
           MyButton(
             ontap: () {
               introductionController.id.value++;
               if (introductionController.id.value > 2) {
                 introductionController.id.value = 2;
-                Get.to( LoginPage());
+                Get.to(LoginPage());
               } else {
                 introductionController.description.value =
                     descriptionStrings[introductionController.id.value];

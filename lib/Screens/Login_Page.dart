@@ -2,20 +2,27 @@ import 'package:balencebeats/Screens/SignUp_page1.dart';
 import 'package:balencebeats/Screens/home_screen.dart';
 import 'package:balencebeats/componenets/Text_button.dart';
 import 'package:balencebeats/componenets/Text_field.dart';
+import 'package:balencebeats/user_auth/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({super.key});
-  final EmailController = TextEditingController();
-  final PassController = TextEditingController();
 
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
+  TextEditingController EmailController = TextEditingController();
+  TextEditingController PassController = TextEditingController();
   @override
+  void dispose() {
+    EmailController.dispose();
+    PassController.dispose();
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFF0B0B19),
@@ -40,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
               child: MyTextField(
                 hinttext: 'Email',
                 unknowntext: false,
-                controller: widget.EmailController,
+                controller: EmailController,
               ),
             ),
             const SizedBox(height: 20),
@@ -50,7 +57,7 @@ class _LoginPageState extends State<LoginPage> {
               child: MyTextField(
                 hinttext: 'Password',
                 unknowntext: true,
-                controller: widget.PassController,
+                controller: PassController,
               ),
             ),
             SizedBox(
@@ -58,17 +65,16 @@ class _LoginPageState extends State<LoginPage> {
             ),
             Container(
               alignment: Alignment.centerLeft,
-              padding: EdgeInsets.only(left: 28),
+              padding: const EdgeInsets.only(left: 28),
               child: const Text(
                 'Forgot your password ?',
-                style:
-                    TextStyle(color: const Color.fromARGB(255, 205, 204, 204)),
+                style: TextStyle(color: Color.fromARGB(255, 205, 204, 204)),
               ),
             ),
             SizedBox(height: Get.height / 13),
             MyButton(
               ontap: () {
-                Get.to(HomePage(username: 'charan',) ,transition: Transition.rightToLeft);
+                _signIn();
               },
               text: 'LOGIN',
             ),
@@ -77,13 +83,13 @@ class _LoginPageState extends State<LoginPage> {
             ),
             GestureDetector(
               onTap: () {
-                Get.to(SignUp1(),transition: Transition.rightToLeft);
+                Get.to(SignUp1(), transition: Transition.rightToLeft);
               },
               child: Container(
                 alignment: Alignment.centerLeft,
-                padding: const  EdgeInsets.only(left: 28),
+                padding: const EdgeInsets.only(left: 28),
                 child: RichText(
-                  text: const  TextSpan(
+                  text: const TextSpan(
                     text: 'Forgot your password ? ',
                     style: TextStyle(
                       color: Color.fromARGB(255, 205, 204, 204),
@@ -104,5 +110,17 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+
+  void _signIn() async {
+    final user = await FirebaseAuthService()
+        .signinAnonymously(EmailController.text, PassController.text);
+    if (user != null) {
+      Get.offAll(HomePage(
+        username: 'charan',
+      ));
+    } else {
+      Get.snackbar('Error', 'Some error occurred');
+    }
   }
 }

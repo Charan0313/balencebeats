@@ -1,7 +1,6 @@
 import 'package:balencebeats/Screens/Page.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart'; 
-
+import 'package:get/get.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({Key? key});
@@ -14,16 +13,16 @@ class _LandingPageState extends State<LandingPage> {
   @override
   void initState() {
     super.initState();
-    
+
     Future.delayed(Duration(seconds: 1), () {
-      Get.off(() => Page1()); 
+      Get.off(() => Page1());
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF0B0B19),
+      backgroundColor: const Color(0xFF0B0B19),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -34,7 +33,7 @@ class _LandingPageState extends State<LandingPage> {
               height: 125.0,
             ),
           ),
-         const  SizedBox(height: 20.0),
+          const SizedBox(height: 20.0),
           const Text(
             'BalenceBeats',
             style: TextStyle(
