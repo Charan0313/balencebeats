@@ -1,3 +1,4 @@
+import 'package:balencebeats/chatbot_page/page/chatbot.dart';
 import 'package:balencebeats/home/pages/home_page.dart';
 import 'package:balencebeats/learn/pages/learn_page.dart';
 import 'package:balencebeats/profile/pages/ProfilePage.dart';
@@ -15,7 +16,7 @@ class _HomePageState extends State<HomePage> {
   List<Widget> widgetList = const [
     Homepage(),
     Learnpage(),
-    Text('message'),
+    ChatbotPage(),
     ProfilePage(username: 'Charan')
   ];
   @override
