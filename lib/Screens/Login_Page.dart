@@ -14,15 +14,19 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController EmailController = TextEditingController();
-  TextEditingController PassController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passController = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
+
   @override
   void dispose() {
-    EmailController.dispose();
-    PassController.dispose();
+    emailController.dispose();
+    passController.dispose();
+    usernameController.dispose();
     super.dispose();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFF0B0B19),
@@ -47,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
               child: MyTextField(
                 hinttext: 'Email',
                 unknowntext: false,
-                controller: EmailController,
+                controller: emailController,
               ),
             ),
             const SizedBox(height: 20),
@@ -57,18 +61,19 @@ class _LoginPageState extends State<LoginPage> {
               child: MyTextField(
                 hinttext: 'Password',
                 unknowntext: true,
-                controller: PassController,
+                controller: passController,
               ),
             ),
             SizedBox(
               height: Get.height / 50,
             ),
             Container(
-              alignment: Alignment.centerLeft,
-              padding: const EdgeInsets.only(left: 28),
-              child: const Text(
-                'Forgot your password ?',
-                style: TextStyle(color: Color.fromARGB(255, 205, 204, 204)),
+              height: 55,
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: MyTextField(
+                hinttext: 'Username',
+                unknowntext: false,
+                controller: usernameController,
               ),
             ),
             SizedBox(height: Get.height / 13),
@@ -114,13 +119,24 @@ class _LoginPageState extends State<LoginPage> {
 
   void _signIn() async {
     final user = await FirebaseAuthService()
-        .signinAnonymously(EmailController.text, PassController.text);
+        .signinAnonymously(emailController.text, passController.text);
     if (user != null) {
       Get.offAll(HomePage(
-        username: 'charan',
+        username: usernameController.text,
       ));
     } else {
-      Get.snackbar('Error', 'Some error occurred');
+      Get.snackbar(
+        'Error',
+        'Enter your details to get started',
+        titleText: const Text('Error', style: TextStyle(color: Colors.red)),
+        messageText: const Text(
+          'Please provide valid information to proceed.',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 12,
+          ),
+        ),
+      );
     }
   }
 }

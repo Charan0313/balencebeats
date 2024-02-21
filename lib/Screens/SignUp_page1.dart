@@ -91,8 +91,18 @@ class _SignUp1State extends State<SignUp1> {
                     Get.to(Signup2(name: name),
                         transition: Transition.rightToLeft);
                   } else {
-                    Get.snackbar('Please enter your name', '',
-                        snackPosition: SnackPosition.BOTTOM);
+                    Get.snackbar(
+                      'Please enter your name',
+                      '',
+                      titleText: const Text(
+                        'Error',
+                        style: TextStyle(color: Colors.red),
+                      ),
+                      messageText: const Text(
+                        'Please enter your name',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    );
                   }
                 },
                 text: 'CONTINUE',

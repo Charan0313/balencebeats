@@ -1,8 +1,9 @@
-import 'package:balencebeats/Screens/Login_Page.dart';
+import 'package:balencebeats/Screens/LandingPage.dart';
+import 'package:balencebeats/home/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
+import 'user_auth/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,7 +26,8 @@ class _MyAppState extends State<MyApp> {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primaryColor: const Color(0xFF2C2C2E)),
-      home: LoginPage(),
+      home: LandingPage()
+      // home: Homepage(username: 'charan'),
     );
   }
 }

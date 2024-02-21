@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ContactBlock extends StatelessWidget {
-  const ContactBlock({Key? key, required this.contact, required this.onDelete})
+  const ContactBlock({Key? key, required this.contact, required this.onDelete, required String name, required String number})
       : super(key: key);
 
   final String contact;

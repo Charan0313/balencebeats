@@ -41,7 +41,7 @@ class _EmergengyContactState extends State<EmergengyContact> {
                             setState(() {
                               contacts.remove(contact);
                             });
-                          },
+                          }, name: '', number: '',
                         ))
                     .toList(),
               ],

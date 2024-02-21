@@ -63,7 +63,8 @@ class _Signup2State extends State<Signup2> {
                     children: [
                       Text(
                         'Nice to meet you, ${widget.name}!',
-                        style: const TextStyle(fontSize: 14, color: Colors.white),
+                        style:
+                            const TextStyle(fontSize: 14, color: Colors.white),
                       ),
                       const SizedBox(height: 5),
                       const Text(
@@ -115,7 +116,6 @@ class _Signup2State extends State<Signup2> {
     );
   }
 
- 
   void _signUp() async {
     final user = await FirebaseAuthService()
         .signupAnonymously(emailController.text, passwordController.text);
@@ -124,7 +124,18 @@ class _Signup2State extends State<Signup2> {
         username: 'charan',
       ));
     } else {
-      Get.snackbar('Error', 'Please enter your details');
+      Get.snackbar(
+        'Please enter your name',
+        '',
+        titleText: const Text(
+          'Error',
+          style: TextStyle(color: Colors.red),
+        ),
+        messageText: const Text(
+          'enter your valid credentials',
+          style: TextStyle(color: Colors.white),
+        ),
+      );
     }
   }
 }

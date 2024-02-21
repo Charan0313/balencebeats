@@ -13,12 +13,19 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int myIndex = 0;
-  List<Widget> widgetList = const [
-    Homepage(),
-    Learnpage(),
-    ChatbotPage(),
-    ProfilePage(username: 'Charan')
-  ];
+  late List<Widget> widgetList;
+
+  @override
+  void initState() {
+    super.initState();
+    widgetList = [
+      Homepage(username: widget.username),
+      Learnpage(),
+      ChatbotPage(),
+      ProfilePage(username: widget.username)
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,7 +72,6 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             icon: Icon(
               size: 30,
-              // Icons.manage_accounts,
               Icons.account_circle,
               color: myIndex == 3
                   ? Color.fromARGB(255, 140, 164, 226)
