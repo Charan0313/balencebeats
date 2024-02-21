@@ -1,5 +1,6 @@
 import 'package:balencebeats/home/bargraph/bargraph.dart';
 import 'package:balencebeats/home/components/Textblock.dart';
+import 'package:balencebeats/home/components/circleindicatorblock/circleindicator.dart';
 import 'package:balencebeats/home/components/custom_Icon_text.dart';
 import 'package:balencebeats/home/components/sleepblock/sleep_block.dart';
 import 'package:balencebeats/home/components/stressblock.dart';
@@ -70,6 +71,7 @@ class _HomepageState extends State<Homepage> {
                 height: 10,
               ),
               const MySleepBlock(),
+              const  MyCircleComponent(),
               const Mytextblock(),
             ],
           ),
