@@ -1,4 +1,6 @@
 import 'package:balencebeats/Emergencycontacts/pages/em_contact.dart';
+import 'package:balencebeats/profile/components/privacypolicy.dart';
+import 'package:balencebeats/profile/components/terms.dart';
 import 'package:balencebeats/profile/components/text_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -52,11 +54,19 @@ class _ProfilePageState extends State<ProfilePage> {
               const TextBar(
                   text: 'Whats new', icon: Icons.navigate_next_outlined),
               const TextBar(text: 'FAQ', icon: Icons.navigate_next_outlined),
-              const TextBar(
-                  text: 'Terms Of Service ',
-                  icon: Icons.navigate_next_outlined),
-              const TextBar(
-                  text: 'Privacy Policy', icon: Icons.navigate_next_outlined),
+              GestureDetector(
+                onTap: () => {Get.to(MyTerms(), transition: Transition.rightToLeft)},
+                child: const TextBar(
+                    text: 'Terms Of Service ',
+                    icon: Icons.navigate_next_outlined),
+              ),
+              GestureDetector(
+                onTap: () => {
+                  Get.to(MyPrivacyPolicy(), transition: Transition.rightToLeft)
+                },
+                child: const TextBar(
+                    text: 'Privacy Policy', icon: Icons.navigate_next_outlined),
+              ),
               SizedBox(height: Get.height / 4),
             ],
           ),
