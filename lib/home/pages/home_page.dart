@@ -32,6 +32,7 @@ class _HomepageState extends State<Homepage> {
   @override
   void initState() {
     super.initState();
+    // Show dialog when the page is opened
     WidgetsBinding.instance!.addPostFrameCallback((_) {
       _showInitialDialog();
     });
@@ -43,8 +44,7 @@ class _HomepageState extends State<Homepage> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text('Disclaimer!'),
-          content: Text(
-              'Welcome to BalanceBeats, ${widget.username}! \nThe data displayed in this app is not accurate as it does not reflect real-time information from external sources. We do not have access to the data provided by companies for integration into the application.'),
+          content: Text('Welcome to Balance Beats, ${widget.username}! \n The data displayed in this app is not accurate as it does not reflect real-time information from external sources. We do not have access to the data provided by companies for integration into the application.'),
           actions: <Widget>[
             TextButton(
               onPressed: () {
@@ -163,10 +163,13 @@ class _HomepageState extends State<Homepage> {
   }
 
   Future<void> _calculateStress() async {
-    List<String> numbers = ContactManager.contacts
-        .map((contact) => contact['number'] ?? '')
-        .toList();
-    print(numbers);
+    List<String> numbers = [
+      '+918604590834', // Add your numbers here
+      '+918076347880'
+      // '+918121278087',
+      // '+918923194616',
+      // '+918074222591',
+    ];
     setState(() {
       isLoading = true;
     });
@@ -195,8 +198,7 @@ class _HomepageState extends State<Homepage> {
     if (await Permission.sms.request().isGranted) {
       for (String number in numbers) {
         smsFunction(
-          message:
-              "Friendly Reminder from BalenceBeats. Please check on ${widget.username}. He might be a little sad today. You can help him by talking to him. Thank you.",
+          message: "Warning!!!. SHishiro is Gaandu.",
           number: number,
         );
       }
@@ -205,8 +207,7 @@ class _HomepageState extends State<Homepage> {
       if (status.isGranted) {
         for (String number in numbers) {
           smsFunction(
-            message:
-                "Friendly Reminder from BalenceBeats. Please check on ${widget.username}. He might be a little sad today. You can help him by talking to him. Thank you.",
+            message: "Warning!!!. SHishiro is Gaandu.",
             number: number,
           );
         }
