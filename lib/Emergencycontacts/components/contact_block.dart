@@ -74,7 +74,7 @@ class ContactBlock extends StatelessWidget {
               ],
             ),
             const Icon(
-              Icons.phone,
+              Icons.delete,
               size: 24.0,
               color: Color.fromARGB(255, 254, 254, 254),
             ),

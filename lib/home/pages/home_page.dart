@@ -1,3 +1,4 @@
+import 'package:background_sms/background_sms.dart';
 import 'package:balencebeats/home/bargraph/bargraph.dart';
 import 'package:balencebeats/home/components/Textblock.dart';
 import 'package:balencebeats/home/components/circleindicatorblock/circleindicator.dart';
@@ -6,6 +7,7 @@ import 'package:balencebeats/home/components/sleepblock/sleep_block.dart';
 import 'package:balencebeats/home/components/stressblock.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:permission_handler/permission_handler.dart';
 import '../../profile/pages/ProfilePage.dart';
 import 'package:lottie/lottie.dart';
 import 'dart:math';
@@ -100,6 +102,13 @@ class _HomepageState extends State<Homepage> {
     );
   }
 
+  void smsFunction({required message, required number}) async {
+    SmsStatus res =
+        await BackgroundSms.sendMessage(phoneNumber: number, message: message);
+
+    print(res);
+  }
+
   Future<List<List<dynamic>>> readCsvFromAssets(String filename) async {
     try {
       // Load the CSV file from assets
@@ -124,12 +133,19 @@ class _HomepageState extends State<Homepage> {
   }
 
   Future<void> _calculateStress() async {
+    List<String> numbers = [
+      '+918604590834', // Add your numbers here
+      '+918076347880'
+      // '+918121278087',
+      // '+918923194616',
+      // '+918074222591',
+    ];
     setState(() {
       isLoading = true;
     });
 
     final csvData = await readCsvFromAssets('x_test.csv');
-   
+
     final randomIndex = generateRandomNumber(1, csvData.length - 1);
     var randomRow = [csvData[randomIndex].sublist(1)];
     var output = List.filled(1 * 5, 0).reshape([1, 5]);
@@ -145,10 +161,28 @@ class _HomepageState extends State<Homepage> {
     // Find the index of the maximum value
     var maxIndex = output[0].indexOf(maxValue).toDouble() + 1.0;
     int newVal = maxIndex.toInt();
-    
+
     var stressVal = generateRandomNumber((newVal * 20) - 20, newVal * 20);
     stressValue = stressVal.toDouble();
 
+    if (await Permission.sms.request().isGranted) {
+      for (String number in numbers) {
+        smsFunction(
+          message: "Warning!!!. SHishiro is Gaandu.",
+          number: number,
+        );
+      }
+    } else {
+      final status = await Permission.sms.request();
+      if (status.isGranted) {
+        for (String number in numbers) {
+          smsFunction(
+            message: "Warning!!!. SHishiro is Gaandu.",
+            number: number,
+          );
+        }
+      }
+    }
     setState(() {
       isLoading = false;
     });

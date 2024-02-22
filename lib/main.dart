@@ -1,6 +1,4 @@
 import 'package:balencebeats/Screens/LandingPage.dart';
-import 'package:balencebeats/Screens/home_screen.dart';
-import 'package:firebase_ml_model_downloader/firebase_ml_model_downloader.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -11,31 +9,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  await downloadModel();
   runApp(const MyApp());
-}
-
-Future<void> downloadModel() async {
-  try {
-    final modelName = "stress_level_predictor"; // Replace with your model name
-    final model = await FirebaseModelDownloader.instance
-        .getModel(
-            modelName,
-            FirebaseModelDownloadType.localModel,
-            FirebaseModelDownloadConditions(
-              iosAllowsCellularAccess: true,
-              iosAllowsBackgroundDownloading: false,
-              androidChargingRequired: false,
-              androidWifiRequired: false,
-              androidDeviceIdleRequired: false,
-            ))
-        .then((customModel) {
-      final localModelPath = customModel.file;
-    });
-    print("Model downloaded to: ${model.file}");
-  } catch (e) {
-    print("Error downloading model: $e");
-  }
 }
 
 class MyApp extends StatefulWidget {
@@ -49,10 +23,10 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(primaryColor: const Color(0xFF2C2C2E)),
-      home: LandingPage()
-      // home: HomePage(username: 'charan'),
-    );
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(primaryColor: const Color(0xFF2C2C2E)),
+        home: LandingPage()
+        // home: HomePage(username: 'charan'),
+        );
   }
 }
