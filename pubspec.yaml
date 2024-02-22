@@ -30,8 +30,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  url_launcher: ^6.0.9 
-  
+  url_launcher: ^6.0.9
+
   fl_chart: ^0.66.2
   get: ^4.6.6
   bloc:
@@ -46,8 +46,9 @@ dependencies:
   feather_icons: ^1.2.0
   cloud_firestore: ^4.15.5
   firebase_auth: ^4.17.4
-  firebase_storage: ^11.6.6 
+  firebase_storage: ^11.6.6
   firebase_core: ^2.25.4
+  firebase_ml_model_downloader: ^0.2.4+13
 dev_dependencies:
   flutter_test:
     sdk: flutter
