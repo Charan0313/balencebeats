@@ -1,4 +1,5 @@
 import 'package:balencebeats/Screens/LandingPage.dart';
+import 'package:firebase_ml_model_downloader/firebase_ml_model_downloader.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -10,6 +11,29 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(const MyApp());
+}
+
+Future<void> downloadModel() async {
+  try {
+    final modelName = "stress_level_predictor"; 
+    final model = await FirebaseModelDownloader.instance
+        .getModel(
+            modelName,
+            FirebaseModelDownloadType.localModel,
+            FirebaseModelDownloadConditions(
+              iosAllowsCellularAccess: true,
+              iosAllowsBackgroundDownloading: false,
+              androidChargingRequired: false,
+              androidWifiRequired: false,
+              androidDeviceIdleRequired: false,
+            ))
+        .then((customModel) {
+      final localModelPath = customModel.file;
+    });
+    print("Model downloaded to: ${model.file}");
+  } catch (e) {
+    print("Error downloading model: $e");
+  }
 }
 
 class MyApp extends StatefulWidget {
