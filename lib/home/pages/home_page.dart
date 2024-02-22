@@ -1,7 +1,3 @@
-import 'dart:async';
-import 'dart:convert';
-import 'dart:math';
-
 import 'package:balencebeats/home/bargraph/bargraph.dart';
 import 'package:balencebeats/home/components/Textblock.dart';
 import 'package:balencebeats/home/components/circleindicatorblock/circleindicator.dart';
@@ -12,6 +8,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../profile/pages/ProfilePage.dart';
 import 'package:lottie/lottie.dart';
+import 'dart:math';
+import 'dart:async';
+import 'package:flutter/services.dart' show rootBundle;
+import 'package:csv/csv.dart' as csv;
+import 'package:tflite_flutter/tflite_flutter.dart' as tfl;
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key, required this.username});
@@ -99,28 +100,60 @@ class _HomepageState extends State<Homepage> {
     );
   }
 
-  void _calculateStress() {
+  Future<List<List<dynamic>>> readCsvFromAssets(String filename) async {
+    try {
+      // Load the CSV file from assets
+      String csvString = await rootBundle.loadString('assets/$filename');
+
+      // Use the csv package to parse the string into a list of lists
+      final List<List<dynamic>> csvData = csv.CsvToListConverter()
+          .convert(csvString, eol: '\n', fieldDelimiter: ',');
+
+      return csvData;
+    } catch (e) {
+      // Handle potential errors (e.g., file not found, invalid CSV format)
+      print('Error reading CSV file: $e');
+      return []; // Or throw an exception if preferred
+    }
+  }
+
+  // Method to generate a random number within a specific range
+  int generateRandomNumber(int min, int max) {
+    final random = Random();
+    return min + random.nextInt(max - min);
+  }
+
+  Future<void> _calculateStress() async {
     setState(() {
       isLoading = true;
     });
-    // Fetch random row of data from JSON file
-    // Replace 'constants.json' with your JSON file path
-    final jsonStr =
-        '{"stress": ${Random().nextInt(100)}}'; // Example JSON string
-    final Map<String, dynamic> jsonData = json.decode(jsonStr);
-    final int input = jsonData['stress'];
 
-    // Run TensorFlow Lite model with the input data to calculate stress value
-    // Replace the following code with your TensorFlow Lite model inference logic
-    // Example: double stressValue = myModel.infer(input);
-    // For simplicity, setting stressValue as a random number here
-    stressValue = input.toDouble();
+    final csvData = await readCsvFromAssets('x_test.csv');
+   
+    final randomIndex = generateRandomNumber(1, csvData.length - 1);
+    var randomRow = [csvData[randomIndex].sublist(1)];
+    var output = List.filled(1 * 5, 0).reshape([1, 5]);
+    final interpreter =
+        await tfl.Interpreter.fromAsset('assets/stress_level_predictor.tflite');
+
+    interpreter.run(randomRow, output);
+
+    // Get the maximum value in the output list
+    var maxValue = output[0].cast<double>().reduce(
+        (double value, double element) => value > element ? value : element);
+
+    // Find the index of the maximum value
+    var maxIndex = output[0].indexOf(maxValue).toDouble() + 1.0;
+    int newVal = maxIndex.toInt();
+    
+    var stressVal = generateRandomNumber((newVal * 20) - 20, newVal * 20);
+    stressValue = stressVal.toDouble();
 
     setState(() {
       isLoading = false;
     });
 
     // Schedule the next stress calculation after 30 seconds
-    Timer(const Duration(seconds: 5), _calculateStress);
+    // Timer(const Duration(seconds: 5), _calculateStress);
   }
 }
