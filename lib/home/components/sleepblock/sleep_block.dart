@@ -10,27 +10,30 @@ class MySleepBlock extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Container(
-        width: Get.width,
-        height: Get.height / 5,
+        width: double.infinity,
         decoration: BoxDecoration(
           color: customColor,
           borderRadius: BorderRadius.circular(12),
         ),
-        child: const Column(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal : 12.0,vertical: 10),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 10),
               child: Text(
                 'Last Sleep information',
                 style: TextStyle(color: Colors.white, fontSize: 16),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
-              child: Column(
+            Container(
+              alignment: Alignment.center,
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+              child: const Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SleepComponent(
                         imageName: 'moon.png',
@@ -45,13 +48,16 @@ class MySleepBlock extends StatelessWidget {
                     ],
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SleepComponent(
                         imageName: 'clock.png',
                         duration: '7h 32m ',
                         description: 'went to bed',
                       ),
-                    SizedBox(width: 20,),
+                      SizedBox(
+                        width: 20,
+                      ),
                       SleepComponent(
                         imageName: 'snor.png',
                         duration: '8h 30m',

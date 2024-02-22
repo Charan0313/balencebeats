@@ -11,7 +11,6 @@ import 'package:balencebeats/home/components/stressblock.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../profile/pages/ProfilePage.dart';
-import 'package:balencebeats/home/components/dummydata.dart';
 import 'package:lottie/lottie.dart';
 
 class Homepage extends StatefulWidget {
@@ -51,7 +50,8 @@ class _HomepageState extends State<Homepage> {
         ),
       ),
       body: SingleChildScrollView(
-        child: Padding(
+        child: Container(
+          width: double.infinity,
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,15 +66,19 @@ class _HomepageState extends State<Homepage> {
                 style:
                     const TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
               ),
-              MyHomeComponent(),
+              Container(alignment: Alignment.center, child: MyHomeComponent()),
               StressBlock(value: stressValue.toString()),
               isLoading
-                  ? Lottie.asset(
-                      'assets/loader.json') // Replace 'assets/loader.json' with your loader animation path
-                  : ElevatedButton(
-                      onPressed: _calculateStress,
-                      child: const Text('Calculate Stress'),
+                  ? Lottie.asset('assets/loader.json')
+                  : Container(
+                      alignment: Alignment.center,
+                      padding: EdgeInsets.symmetric(horizontal: Get.width / 4),
+                      child: ElevatedButton(
+                        onPressed: _calculateStress,
+                        child: const Text('Calculate Stress'),
+                      ),
                     ),
+              const SizedBox(height: 10),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: Get.width / 6),
                 child: SizedBox(
@@ -84,9 +88,7 @@ class _HomepageState extends State<Homepage> {
                       values: values,
                     )),
               ),
-              const SizedBox(
-                height: 10,
-              ),
+              const SizedBox(height: 10),
               const MySleepBlock(),
               const MyCircleComponent(),
               const Mytextblock(),

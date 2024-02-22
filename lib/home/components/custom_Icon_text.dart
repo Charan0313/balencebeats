@@ -68,12 +68,16 @@ class MyHomeComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return Container(
+      width: Get.width,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
+              alignment: Alignment.center,
+              width: double.infinity,
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Wrap(
@@ -120,10 +124,13 @@ class MyHomeComponent extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 5),
-          Obx(() => Text(
-                controller.finalval.isNotEmpty ? controller.finalval.value : '',
-                style: const TextStyle(fontSize: 16),
-              )),
+          Container(
+            alignment: Alignment.center,
+            child: Obx(() => Text(
+                  controller.finalval.isNotEmpty ? controller.finalval.value : '',
+                  style: const TextStyle(fontSize: 16),
+                )),
+          ),
         ],
       ),
     );
