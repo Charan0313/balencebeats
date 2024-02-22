@@ -30,6 +30,35 @@ class _HomepageState extends State<Homepage> {
   bool isLoading = false;
 
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      _showInitialDialog();
+    });
+  }
+
+  void _showInitialDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Disclaimer!'),
+          content: Text(
+              'Welcome to BalanceBeats, ${widget.username}! \nThe data displayed in this app is not accurate as it does not reflect real-time information from external sources. We do not have access to the data provided by companies for integration into the application.'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
