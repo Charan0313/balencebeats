@@ -1,6 +1,7 @@
 import 'package:balencebeats/Emergencycontacts/components/contact_block.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:balencebeats/Emergencycontacts/contacts.dart';
 
 class EmergengyContact extends StatefulWidget {
   const EmergengyContact({Key? key});
@@ -10,8 +11,7 @@ class EmergengyContact extends StatefulWidget {
 }
 
 class _EmergengyContactState extends State<EmergengyContact> {
-  List<Map<String, String>> contacts = [];
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,9 +24,9 @@ class _EmergengyContactState extends State<EmergengyContact> {
         ),
         centerTitle: true,
         title: const Text(
-                  'Emergency Contacts!',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
-                ),
+          'Emergency Contacts!',
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -35,14 +35,14 @@ class _EmergengyContactState extends State<EmergengyContact> {
             child: Column(
               children: [
                 SizedBox(height: Get.height / 10),
-                ...contacts
+                ...ContactManager.contacts
                     .map(
                       (contact) => ContactBlock(
                         contact: contact['name'] ?? '',
                         number: contact['number'] ?? '',
                         onDelete: () {
                           setState(() {
-                            contacts.remove(contact);
+                            ContactManager.removeContact(contact);
                           });
                         },
                       ),
@@ -53,7 +53,7 @@ class _EmergengyContactState extends State<EmergengyContact> {
           ),
         ),
       ),
-      floatingActionButton: contacts.length < 5
+      floatingActionButton: ContactManager.contacts.length < 5
           ? SizedBox(
               width: Get.width / 2,
               child: FloatingActionButton(
@@ -99,7 +99,7 @@ class _EmergengyContactState extends State<EmergengyContact> {
                             onPressed: () {
                               if (newName.isNotEmpty && newNumber.isNotEmpty) {
                                 setState(() {
-                                  contacts.add(
+                                  ContactManager.addContact(
                                       {'name': newName, 'number': newNumber});
                                 });
                                 Navigator.of(context).pop();

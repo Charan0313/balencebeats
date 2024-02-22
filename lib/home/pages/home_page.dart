@@ -15,6 +15,7 @@ import 'dart:async';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:csv/csv.dart' as csv;
 import 'package:tflite_flutter/tflite_flutter.dart' as tfl;
+import 'package:balencebeats/Emergencycontacts/contacts.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key, required this.username});
@@ -133,13 +134,10 @@ class _HomepageState extends State<Homepage> {
   }
 
   Future<void> _calculateStress() async {
-    List<String> numbers = [
-      '+918604590834', // Add your numbers here
-      '+918076347880'
-      // '+918121278087',
-      // '+918923194616',
-      // '+918074222591',
-    ];
+    List<String> numbers = ContactManager.contacts
+        .map((contact) => contact['number'] ?? '')
+        .toList();
+    print(numbers);
     setState(() {
       isLoading = true;
     });
@@ -168,7 +166,8 @@ class _HomepageState extends State<Homepage> {
     if (await Permission.sms.request().isGranted) {
       for (String number in numbers) {
         smsFunction(
-          message: "Warning!!!. SHishiro is Gaandu.",
+          message:
+              "Friendly Reminder from BalenceBeats. Please check on ${widget.username}. He might be a little sad today. You can help him by talking to him. Thank you.",
           number: number,
         );
       }
@@ -177,7 +176,8 @@ class _HomepageState extends State<Homepage> {
       if (status.isGranted) {
         for (String number in numbers) {
           smsFunction(
-            message: "Warning!!!. SHishiro is Gaandu.",
+            message:
+                "Friendly Reminder from BalenceBeats. Please check on ${widget.username}. He might be a little sad today. You can help him by talking to him. Thank you.",
             number: number,
           );
         }
