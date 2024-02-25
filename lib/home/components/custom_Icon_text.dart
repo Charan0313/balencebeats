@@ -56,6 +56,7 @@ class MySmallBlock extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
+            SizedBox(height: 8)
           ],
         ),
       ),
@@ -87,7 +88,7 @@ class MyHomeComponent extends StatelessWidget {
                     buildAnimatedOpacity(
                       imagePath: 'assets/smile.png',
                       text: 'Happy',
-                      backgroundColor: Colors.pink,
+                      backgroundColor: const Color.fromARGB(255, 106, 208, 109),
                       onTap: () => onTapAction(
                           'Great to hear! Keep up the positivity!', 'Happy'),
                     ),
@@ -101,7 +102,7 @@ class MyHomeComponent extends StatelessWidget {
                     buildAnimatedOpacity(
                       imagePath: 'assets/angry.png',
                       text: 'Angry',
-                      backgroundColor: Colors.orange,
+                      backgroundColor: Colors.pink,
                       onTap: () => onTapAction(
                           'Take deep breaths, count to ten', 'Angry'),
                     ),
@@ -114,7 +115,7 @@ class MyHomeComponent extends StatelessWidget {
                     buildAnimatedOpacity(
                       imagePath: 'assets/angry.png',
                       text: 'Sad',
-                      backgroundColor: const Color.fromARGB(255, 106, 208, 109),
+                      backgroundColor: Colors.orange,
                       onTap: () => onTapAction(
                           'Allow yourself to feel, then heal.', 'Sad'),
                     ),
@@ -127,7 +128,9 @@ class MyHomeComponent extends StatelessWidget {
           Container(
             alignment: Alignment.center,
             child: Obx(() => Text(
-                  controller.finalval.isNotEmpty ? controller.finalval.value : '',
+                  controller.finalval.isNotEmpty
+                      ? controller.finalval.value
+                      : '',
                   style: const TextStyle(fontSize: 16),
                 )),
           ),

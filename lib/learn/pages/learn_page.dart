@@ -44,7 +44,7 @@ class _LearnpageState extends State<Learnpage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-             const  Padding(
+              const Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Text(
                   'Learn about \nMental Health !',
@@ -59,10 +59,14 @@ class _LearnpageState extends State<Learnpage> {
                     'Good sleep can be tough to come by, even when you’re focused on doing all the right sleep-boosting things - like drinking a calming beverage in the evening, doing gentle stretches, and practicing a nighttime ritual, for starters. Because sleep operates in accordance with your circadian rhythm (aka 24-hour body clock), which can be affected by various day and nighttime actions, there are also a handful of ...',
                 onTap: () async {
                   const url = 'https://www.google.com';
-                  if (await canLaunch(url)) {
-                    await launch(url);
-                  } else {
-                    throw 'Could not launch $url';
+                  try {
+                    if (await canLaunch(url)) {
+                      await launch(url);
+                    } else {
+                      throw 'Could not launch $url';
+                    }
+                  } catch (e) {
+                    print('Error launching URL: $e');
                   }
                 },
               ),
@@ -74,10 +78,14 @@ class _LearnpageState extends State<Learnpage> {
                     'Obstructive sleep apnea (OSA) is a common sleep disorder in which comorbid insomnia is a frequent complication. While benzodiazepines effectively improve sleep parameters, they may be a poor option for patients with OSA due to their disruption of the respiratory system and sleep rhythmPreviously, research showed that melatonin improved duration and ...',
                 onTap: () async {
                   const url = 'https://www.google.com';
-                  if (await canLaunch(url)) {
-                    await launch(url);
-                  } else {
-                    throw 'Could not launch $url';
+                  try {
+                    if (await canLaunch(url)) {
+                      await launch(url);
+                    } else {
+                      throw 'Could not launch $url';
+                    }
+                  } catch (e) {
+                    print('Error launching URL: $e');
                   }
                 },
               ),
@@ -89,10 +97,14 @@ class _LearnpageState extends State<Learnpage> {
                     'Good sleep can be tough to come by, even when you’re focused on doing all the right sleep-boosting things - like drinking a calming beverage in the evening, doing gentle stretches, and practicing a nighttime ritual, for starters. Because sleep operates in accordance with your circadian rhythm (aka 24-hour body clock), which can be affected by various day and nighttime actions, there are also a handful of ...',
                 onTap: () async {
                   const url = 'https://www.google.com';
-                  if (await canLaunch(url)) {
-                    await launch(url);
-                  } else {
-                    throw 'Could not launch $url';
+                  try {
+                    if (await canLaunch(url)) {
+                      await launch(url);
+                    } else {
+                      throw 'Could not launch $url';
+                    }
+                  } catch (e) {
+                    print('Error launching URL: $e');
                   }
                 },
               ),

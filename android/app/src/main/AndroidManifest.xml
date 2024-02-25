@@ -3,7 +3,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.SEND_SMS"/>
     <application
-        android:label="balencebeats"
+        android:label="BalanceBeats"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

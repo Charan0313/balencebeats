@@ -28,11 +28,11 @@ class SleepComponent extends StatelessWidget {
             children: [
               Text(
                 duration,
-                style: const TextStyle(color: Colors.white, fontSize: 14),
+                style: const TextStyle(color: Colors.white, fontSize: 18),
               ),
               Text(
                 description,
-                style: const  TextStyle(color: Colors.black, fontSize: 10),
+                style: const TextStyle(color: Colors.black, fontSize: 14),
               )
             ],
           )

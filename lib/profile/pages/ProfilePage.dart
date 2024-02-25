@@ -6,6 +6,7 @@ import 'package:balencebeats/profile/components/text_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key, required this.username}) : super(key: key);
@@ -38,10 +39,9 @@ class _ProfilePageState extends State<ProfilePage> {
             children: [
               Row(
                 children: [
-                  CircleAvatar(
-                    backgroundImage: const AssetImage('assets/logo.jpg'),
-                    radius: Get.height / 16,
-                  ),
+                  Lottie.asset('assets/male-avatar.json',
+                      height: Get.height / 8, width: Get.width / 4),
+                  
                   SizedBox(
                     width: Get.width / 8,
                   ),
