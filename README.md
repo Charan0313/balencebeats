@@ -2,9 +2,22 @@
 
 BalanceBeats is a mobile application developed with Flutter, dedicated to advancing the United Nations Sustainable Development Goal for Good Health and Well-being. 🚀 The app is meticulously designed to monitor and enhance mental health by tracking sleep levels, heart health, and stress levels, contributing to a healthier and more balanced lifestyle. We aim to address early-stage mental health challenges faced by individuals.
 
-## Glimpse 📱
-![Balance Beats Preview](https://snipboard.io/hev8kd.jpg)
+## Try BalanceBeats
 
+**Try out our app now!** You can download the latest version from the [GitHub Releases](https://github.com/Charan0313/balencebeats/releases/tag/v0.0.1) section. Simply download the APK file and follow the installation instructions.
+
+You can also clone the repository and run the project in your local environment by following installation instructions below.
+
+## Glimpse 📱
+<img src="https://github.com/Charan0313/balencebeats/assets/123640350/802515f6-1833-467d-8f7d-5bc1f9cf75d5" width="300px" height="600px" alt="Balance Beats Preview">
+<img src="https://github.com/Charan0313/balencebeats/assets/123640350/faeeb9bd-acb0-4b85-bbd4-dca5d0a1d6fe" width="300px" height="600px" alt="Chatbot">
+<img src="https://github.com/Charan0313/balencebeats/assets/123640350/cf85a67e-14a8-4544-8907-bbd7c48ca57a" width="300px" height="600px" alt="LearnPage">
+
+## Demo Video
+
+https://github.com/Charan0313/balencebeats/assets/123640350/bdb5e554-bdad-44a9-be71-285a7d14ef65
+
+Check out complete demo at https://youtu.be/FdUHskxBDww?si=u14RsEPWyq4l8V_b
 ## Why Choose Us
 
 BalanceBeats stands out for its unique combination of innovation, personalization, and a heartfelt mission. Our team, composed of talented and passionate students, brings a fresh perspective and a dedication to addressing the critical issue of mental health among students. Unlike large corporations, we are driven by a genuine concern for our peers and a shared commitment to making a positive impact on society. Our app not only monitors sleep, heart, and stress levels but also incorporates a personalized chatbot, "Bestie," providing empathetic mental health support. By choosing BalanceBeats, you support a project fueled by creativity, empathy, and a deep understanding of the challenges faced by students today.
